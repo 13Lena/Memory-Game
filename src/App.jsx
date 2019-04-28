@@ -4,8 +4,8 @@ import { deepFreeze } from "./deepFreeze";
 import ImageCard from "./images/imageCard";
 
 function shuffle(arr) {
-  let values = [...arr];
-  var i, j, temp;
+  const values = [...arr];
+  let i, j, temp;
   for (i = values.length - 1; i > 0; i--) {
     j = Math.floor(Math.random() * (i + 1));
     temp = values[i];
@@ -17,31 +17,80 @@ function shuffle(arr) {
 
 function App() {
   const [failure, setFailure] = React.useState(false);
+  const [win, setWin] = React.useState(false);
 
   const [images, updateImages] = React.useState(deepFreeze(imagesJson));
   return (
     <div>
       <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg">
           <ul>
             <li className="brand">
-              <a href="/">Memory Game</a>
+              <h1>Memory Game</h1>
             </li>
 
-            <li>
+            <li className="restartB">
               <button
                 onClick={() => {
                   setFailure(false);
+                  setWin(false);
                   updateImages(shuffle(imagesJson));
                 }}
-              >
-                Restart
-              </button>
+              >Restart</button>
             </li>
           </ul>
         </nav>
+
         <header className="header">
           {failure && <h1>Incorrect guess. Please restart to play again.</h1>}
+          {win && (
+            <h1>You win! Have a virtual cookie! Restart to play again.</h1>
+          )}
+        </header>
+
+        <div className="cards">
+          {images.map((image, i) => (
+            <ImageCard
+              id={image.id}
+              key={image.id}
+              image={image.image}
+              clicked={image.clicked}
+              guess={() => {
+                if (win) {
+                  return;
+                }
+                if (failure) {
+                  return;
+                }
+                if (image.clicked) {
+                  setFailure(true);
+                  return;
+                }
+                const newImage = {
+                  ...image,
+                  clicked: true
+                };
+                // const newArr = shuffle(images.map(image => {
+                //   if (image.id === newImage.id) {
+                //     return newImage
+                //   }
+                //   return image;
+                // }));
+                const newArr = shuffle([
+                  newImage,
+                  ...images.filter(image => image.id !== newImage.id)
+                ]);
+
+                if (newArr.filter(image => image.clicked === true ).length === 12) {
+                  setWin(true);
+                }
+                updateImages(newArr);
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="score">
           <h1>
             Score:{" "}
             {images.reduce((acc, image) => {
@@ -51,47 +100,13 @@ function App() {
               return acc;
             }, 0)}
           </h1>
-        </header>
-        <div className="cards">
-          {images.map((image, i) => (
-            <ImageCard
-              id={image.id}
-              key={image.id}
-              image={image.image}
-              clicked={image.clicked}
-              guess={() => {
-                if (failure) {
-                  return;
-                }
-                if (image.clicked) {
-                  setFailure(true);
-                } else {
-                  const newImage = {
-                    ...image,
-                    clicked: true
-                  };
-                  let newArr = shuffle([
-                    newImage,
-                    ...images.filter(image => image.id !== newImage.id)
-                  ]);
-                  updateImages(newArr);
-                }
-              }}
-            />
-          ))}
         </div>
+
         <footer className="footer">
-          <div className="bottom">Memory</div>
+          <div className="bottom text-center">Memory Game</div>
+          <div className="bottom text-center">Lena Hamilton 2019</div>
         </footer>
       </div>
-      {/* <div>
-        <div>
-          header with title, score card and start/restart button (where to put
-          instructions?)
-        </div>
-        <div>game, twelve images, shuffles after onClick </div>
-        <div>footer</div>
-      </div>*/}
     </div>
   );
 }
