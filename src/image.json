@@ -1,0 +1,62 @@
+[
+    {
+      "id": 1,
+      "image": "http://www.fractal-recursions.com/fractals/fractal-826v6669.jpg",
+      "clicked": false 
+    },
+    {
+      "id": 2,
+      "image": "http://www.fractal-recursions.com/fractals/fractal-826x6669.jpg",
+      "clicked": false 
+    },
+    {
+      "id": 3,
+      "image": "http://www.fractal-recursions.com/fractals/fractal-82863.jpg",
+      "clicked": false 
+    },
+    {
+      "id": 4,
+      "image": "http://www.fractal-recursions.com/fractals/fractal-6962.jpg",
+      "clicked": false 
+    },
+    {
+      "id": 5,
+      "image": "http://www.fractal-recursions.com/fractals/fractal-6961.jpg",
+      "clicked": false 
+    },
+    {
+      "id": 6,
+      "image": "http://www.fractal-recursions.com/fractals/fractal-6169.jpg",
+      "clicked": false 
+    },
+    {
+      "id": 7,
+      "image": "http://www.fractal-recursions.com/fractals/fractal-6669.jpg",
+      "clicked": false 
+    },
+    {
+      "id": 8,
+      "image": "http://www.fractal-recursions.com/fractals/fractal-42763.jpg",
+      "clicked": false 
+    },
+    {
+      "id": 9,
+      "image": "http://www.fractal-recursions.com/fractals/fractal-121953.jpg",
+      "clicked": false 
+    },
+    {
+      "id": 10,
+      "image": "http://www.fractal-recursions.com/fractals/fractal-11961.jpg",
+      "clicked": false 
+    },
+    {
+      "id": 11,
+      "image": "http://www.fractal-recursions.com/fractals/fractal-42761.jpg",
+      "clicked": false 
+    },
+    {
+      "id": 12,
+      "image": "http://www.fractal-recursions.com/fractals/fractal-596f1434b.jpg",
+      "clicked": false 
+    }
+  ]
