@@ -24,10 +24,13 @@ function App() {
     <div>
       <div>
         <nav className="navbar navbar-expand-lg">
-          <ul>
+          <div className="container-fluid">
+          <ul className="nav navbar-nav">
             <li className="brand">
               <h1>Memory Game</h1>
             </li>
+            </ul>
+            <ul className="nav navbar-nav navbar-right">
 
             <li className="restartB">
               <button
@@ -39,6 +42,7 @@ function App() {
               >Restart</button>
             </li>
           </ul>
+          </div>
         </nav>
 
         <header className="header">
